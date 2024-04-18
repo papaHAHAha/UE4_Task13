@@ -1,6 +1,46 @@
 #include <iostream>
 #include "Helper.h"
 #include <string>
+#include <cmath>
+
+//task17
+class Vector
+{
+public :
+	Vector() : x(5), y(5), z(5)
+	{}
+	Vector(double _x, double _y, double _z) : x(_x), y(_y), z(_z)
+	{}
+	void Show()
+	{
+		std::cout << "\n" << x << " " << y << " " << z;
+	}
+	void ShowVectorModule()
+	{
+		Module = sqrt(x * x + y * y + z * z);
+		std::cout << "\n" << "Vector module = " << Module;
+	}
+private :
+	double x = 0;
+	double y = 0;
+	double z = 0;
+	double Module = 0;
+};
+
+class Task17
+{
+public :
+	Task17() : x(666), j(6.66), g('6')
+	{}
+	void Show()
+	{
+		std::cout << "\n" << "int x = " << x << " " << "double j = " << j << " " << "char g = " << g;
+	}
+private : 
+	int x = 0;
+	double j = 0;
+	char g = 0;
+};
 
 //task 15
 const int N = 10;
@@ -93,4 +133,12 @@ int main()
 		sum += array[index][j];
 	}
 	std::cout << "sum of numbers in line " << index << " = " << sum << std::endl;
+
+	//task17 too
+	Vector v(2,8,3);
+	v.Show();
+	v.ShowVectorModule();
+
+	Task17 task;
+	task.Show();
 }
