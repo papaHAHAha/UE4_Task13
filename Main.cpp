@@ -3,6 +3,64 @@
 #include <string>
 #include <cmath>
 
+//task18
+class Stack
+{
+private:
+	int* arr;
+	int size;
+	int capacity;
+public:
+	Stack() : arr(nullptr), size(0), capacity(0) {}
+
+	~Stack()
+	{
+		delete[] arr;
+	}
+
+	void push(int item)
+	{
+		if (size == capacity)
+		{
+			int new_capctity = (capacity == 0) ? 1 : capacity * 2;
+			resize(new_capctity);
+		}
+		arr[size++] = item;
+	}
+
+	int pop() 
+	{
+		if (!is_empty())
+		{
+			return arr[--size];
+		}
+		else
+		{
+			std::cout << "stack is empty";
+		}
+	}
+
+	bool is_empty() const
+	{
+		return size == 0;
+	}
+
+private:
+	void resize(int new_capacity)
+	{
+		int* new_arr = new int[new_capacity];
+		for (int i = 0; i < size; i++)
+		{
+			new_arr[i] = arr[i];
+		}
+		delete[] arr;
+		arr = new_arr;
+		capacity = new_capacity;
+	}
+
+
+};
+
 //task17
 class Vector
 {
@@ -121,7 +179,7 @@ int main()
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < N; j++) {
 			std::cout.width(3);
-			std::cout << array[i][j];
+			//std::cout << array[i][j];
 		}
 		std::cout << std::endl;
 	}
@@ -132,13 +190,22 @@ int main()
 	for (int j = 0; j < N; j++) {
 		sum += array[index][j];
 	}
-	std::cout << "sum of numbers in line " << index << " = " << sum << std::endl;
+	//std::cout << "sum of numbers in line " << index << " = " << sum << std::endl;
 
 	//task17 too
 	Vector v(2,8,3);
-	v.Show();
-	v.ShowVectorModule();
+	//v.Show();
+	//v.ShowVectorModule();
 
 	Task17 task;
-	task.Show();
+	//task.Show();
+
+	//task18 too
+	Stack stack;
+
+	stack.push(2);
+	stack.push(5);
+	stack.push(1);
+
+	std::cout << stack.pop() << std::endl;
 }
