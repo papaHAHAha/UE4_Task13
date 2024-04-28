@@ -3,6 +3,51 @@
 #include <string>
 #include <cmath>
 
+//task19
+class Animal
+{
+public:
+	Animal() {}
+	
+	virtual void Voice()
+	{
+		std::cout << "Animal Voice\n";
+	}
+};
+
+class Dog : public Animal
+{
+public:
+	Dog() {}
+	
+	void Voice() override
+	{
+		std::cout << "Woof!\n";
+	}
+};
+
+class Cat : public Animal
+{
+public:
+	Cat() {}
+
+	void Voice() override
+	{
+		std::cout << "Meow!\n";
+	}
+};
+
+class Cow : public Animal
+{
+public:
+	Cow() {}
+
+	void Voice() override
+	{
+		std::cout << "Moo!\n";
+	}
+};
+
 //task18
 class Stack
 {
@@ -208,4 +253,22 @@ int main()
 	stack.push(1);
 
 	std::cout << stack.pop() << std::endl;
+
+	//task19 too
+	const int size = 3;
+
+	Animal* animals[size];
+
+	animals[0] = new Dog();
+	animals[1] = new Cat();
+	animals[2] = new Cow();
+
+	for (int i = 0; i < size; i++)
+	{
+		animals[i]->Voice();
+	}
+	for (int i = 0; i < size; i++)
+	{
+		delete animals[i];
+	}
 }
